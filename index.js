@@ -14,7 +14,7 @@ client.on('ready', () => {
 
   let state_list = [
     '!help를 쳐보세요.',
-    '메렁메렁',
+    '너 누구야',
     '에베베베베',
   ]
   let state_list_index = 1;
