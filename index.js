@@ -25,7 +25,7 @@ client.on('ready', () => {
 
   function changeState() {
     setTimeout(() => {
-      // console.log( '상태 변경 -> ', state_list[state_list_index] );
+      console.log( '상태 변경 -> ', state_list[state_list_index] );
       client.user.setPresence({ game: { name: state_list[state_list_index] }, status: 'online' })
       state_list_index += 1;
       if(state_list_index >= state_list.length) {
@@ -35,7 +35,7 @@ client.on('ready', () => {
     }, change_delay);
   }
 
-  // changeState();
+  changeState();
 });
 
 client.on("guildMemberAdd", (member) => {
@@ -72,16 +72,16 @@ client.on('message', (message) => {
     client.users.find(x => x.id == adminUserId).send(msg)
 
     // /* use embed */
-    // let embed = new Discord.RichEmbed()
-    // let img = message.author.avatar ? `https://cdn.discordapp.com/avatars/${message.author.id}/${message.author.avatar}.webp?size=256` : undefined;
-    // let user = message.author.username+'#'+message.author.discriminator
-    // let msg = message.content;
-    // embed.setColor('#186de6')
-    // embed.setAuthor(user+'이(가) 메세지를 보냈습니다.', img)
-    // embed.setFooter(`콜라곰 BOT ❤️`)
-    // embed.addField('메세지 내용', msg, true);
-    // embed.setTimestamp()
-    // client.users.find(x => x.id == adminUserId).send(embed);
+    let embed = new Discord.RichEmbed()
+    let img = message.author.avatar ? `https://cdn.discordapp.com/avatars/${message.author.id}/${message.author.avatar}.webp?size=256` : undefined;
+    let user = message.author.username+'#'+message.author.discriminator
+    let msg = message.content;
+    embed.setColor('#186de6')
+    embed.setAuthor(user+'이(가) 메세지를 보냈습니다.', img)
+    embed.setFooter(`콜라곰 BOT ❤️`)
+    embed.addField('메세지 내용', msg, true);
+    embed.setTimestamp()
+    client.users.find(x => x.id == adminUserId).send(embed);
   }
 
   if(message.content.startsWith('!역할추가')) {
@@ -116,7 +116,7 @@ client.on('message', (message) => {
     embed.addField('running time', `${duration}`, true);
     embed.addField('user',         `${client.users.size.toLocaleString()}`, true);
     embed.addField('server',       `${client.guilds.size.toLocaleString()}`, true);
-    // embed.addField('channel',      `${client.channels.size.toLocaleString()}`, true);
+    embed.addField('channel',      `${client.channels.size.toLocaleString()}`, true);
     embed.addField('Discord.js',   `v${Discord.version}`, true);
     embed.addField('Node',         `${process.version}`, true);
     
@@ -125,7 +125,7 @@ client.on('message', (message) => {
     list = `\`\`\`css\n`;
     
     for(let i=0;i<arr.length;i++) {
-      // list += `${arr[i].name} - ${arr[i].id}\n`
+      list += `${arr[i].name} - ${arr[i].id}\n`
       list += `${arr[i].name}\n`
     }
     list += `\`\`\`\n`
@@ -412,9 +412,9 @@ function MessageSave(message, modify=false) {
     s.Embed,
     s.CreateTime,
   )
-    // .then((res) => {
-    //   console.log('db 저장을 했다.', res);
-    // })
+     .then((res) => {
+       console.log('db 저장을 했다.', res);
+    })
     .catch(error => console.log(error))
 }
 
