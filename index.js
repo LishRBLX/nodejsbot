@@ -13,8 +13,8 @@ const adminUserId = 250693463065100298;
 
 client.on('ready', () => {
   console.log('켰다.');
-  //client.user.setPresence({ game: { name: '!help를 쳐보세요.' }, status: 'online' })
-  client.user.setActivity('제목', { type: 'STREAMING', url: 'https://www.youtube.com/watch?v=_eYJFtExhl8'}); //NEW
+  client.user.setPresence({ game: { name: '!help를 쳐보세요.' }, status: 'online' })
+  //client.user.setActivity('제목', { type: 'STREAMING', url: 'https://www.youtube.com/watch?v=_eYJFtExhl8'}); //NEW
 
   let state_list = [
     '!help를 쳐보세요.',
